@@ -1,37 +1,39 @@
 <html>
 
-<head>
+    <head>
+        <script src="javascripts/jquery-3.1.1.js"></script>
+        <script src="javascripts/Signin.js"></script>
+        <link href="stylesheets/SignupStyle.css" rel="stylesheet" type="text/css"/>
+        <style type="text/css"></style>
+    </head>
 
-    <script src="javascripts/Jquery.js"></script>
-    <script src="javascripts/Signin.js"></script>
-    <link href="stylesheets/SignupStyle.css" rel="stylesheet" type="text/css"/>
-    <style type="text/css"></style>
+    <body>
+        <div class = "block"></div>
 
-</head>
+        <div>
+            <input class="box" id= "emailInput" placeholder="Enter your email">
+            <!--<span class="error">Please enter a valid e-mail</span>-->
+        </div>
 
-<body>
+        <div>
+            <input class="box" id="firstnameInput" placeholder="First name">
+        </div>
 
-<div class = "block"></div>
+        <div>
+            <input class="box" id="lastnameInput" placeholder="Last name">
+        </div>
 
-<div>
-    <input class="box" id= "emailInput" placeholder="Enter your email">
-    <span class="error">Please enter a valid e-mail</span>
-</div>
-<div>
-    <input class="box" id="firstnameInput" placeholder="First name">
-</div>
-<div>
-    <input class="box" id="lastnameInput" placeholder="Last name">
-</div>
-<div>
-    <input class="box" id="passwordInput"  placeholder="Password">
-</div>
-<div>
-    <input class="box" id="verifypasswordInput" placeholder="Verify password">
-    <span class="error">The password is not consistent</span>
-</div>
-<button class="but" id=Button>Confirm</button>
+        <div>
+            <input class="box" id="passwordInput"  placeholder="Password">
+        </div>
 
-</body>
+        <div>
+            <input class="box" id="verifypasswordInput" placeholder="Verify password">
+            <!--<span class="error">The password is not consistent</span>-->
+        </div>
+
+        <button class="but" id=submit>Confirm</button>
+
+    </body>
 
 </html>
