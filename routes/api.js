@@ -5,7 +5,7 @@ var express = require('express');
 var router = express.Router();
 
 router.post('/login', function (req, res) {
-    console.log("connected");
+    console.log("login connected");
     var username = req.body.username;
     var password = req.body.password;
     console.log(username);
@@ -17,6 +17,15 @@ router.post('/login', function (req, res) {
         res.send({"status":"failed"});
         console.log("failed");
     }
+});
+
+router.post('/signin',function(req,res) {
+    console.log("Sign connected");
+    var email = req.body.email;
+    var firstname = req.body.firstname;
+    var lastname = req.body.lastname;
+    var password = req.body.password;
+    
 });
 
 
