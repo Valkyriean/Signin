@@ -25,7 +25,8 @@ router.post('/signin',function(req,res) {
     var firstname = req.body.firstname;
     var lastname = req.body.lastname;
     var password = req.body.password;
-    
+    var verifypassword = req.body.verifypassword;
+
 });
 
 
