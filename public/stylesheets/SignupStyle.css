@@ -1,3 +1,52 @@
-*{
+.block{
+    background: teal;
+    width: 600px;
+    height: 80px;
+    margin:0 auto;
+}
 
+.around{
+    background: #D0D0D0;
+    width: 500px;
+    height: 500px;
+    margin: 10px auto;
+    text-align:center;
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+    border-bottom-left-radius: 10px;
+    border-bottom-right-radius: 10px;
+}
+
+.signup{
+    color: gray;
+    text-align:center;
+    font-size: 30px;
+    line-height: 100px;
+}
+
+.box{
+    margin: 20px 80px;
+    text-align: right;
+}
+
+.text{
+
+    width: 200px;
+    line-height: 15px;
+    background: white;
+    font-size: 20px;
+
+}
+
+.but{
+    background: teal;
+    color: white;
+    width: 100px;
+    height: 30px;
+    margin: 30px auto;
+    font-size: 20px;
+    border-top-left-radius: 7px;
+    border-top-right-radius: 7px;
+    border-bottom-left-radius: 7px;
+    border-bottom-right-radius: 7px;
 }
