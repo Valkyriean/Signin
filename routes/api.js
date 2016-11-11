@@ -3,6 +3,9 @@
  */
 var express = require('express');
 var router = express.Router();
+var db = mongoose.connection;
+
+
 
 function isEmail(str){
     var reg = /^([a-zA-Z0-9_-])+@([a-zA-Z0-9_-])+(.[a-zA-Z0-9_-])+/;
@@ -54,6 +57,10 @@ router.post('/signin',function(req,res) {
         //all good
         res.json({"status": "success"});
         console.log("success");
+        db.on('error', console.error.bind(console, 'connection error:'));
+        db.once('open', function (callback) {
+            // yay!
+        });
 
         //add code to save in data base here
     }
