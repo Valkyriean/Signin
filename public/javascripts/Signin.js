@@ -79,9 +79,7 @@ var init = function() {
 
         }
 
-
         //validation goes here
-
 
     });
 };
