@@ -62,6 +62,8 @@ router.post('/signin',function(req,res) {
             // yay!
         });
 
+        //add code to encrypt
+        // sha(password+"asjhkdfalhs")
         //add code to save in data base here
     }
 });
