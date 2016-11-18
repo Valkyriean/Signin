@@ -3,7 +3,7 @@
  */
 var express = require('express');
 var router = express.Router();
-var db = mongoose.connection;
+var Signin = require('../models/postModels');
 
 
 
@@ -57,14 +57,23 @@ router.post('/signin',function(req,res) {
         //all good
         res.json({"status": "success"});
         console.log("success");
-        db.on('error', console.error.bind(console, 'connection error:'));
-        db.once('open', function (callback) {
-            // yay!
-        });
 
         //add code to encrypt
         // sha(password+"asjhkdfalhs")
         //add code to save in data base here
+
+        var newUser = new Signin({
+            emailaddress: email,
+            firstname: firstname,
+            lastname: lastname,
+            password: password
+        });
+
+        newUser.save(function(err) {
+            if (err) throw err;
+            console.log('User saved successfully!');
+        });
+
     }
 });
 
