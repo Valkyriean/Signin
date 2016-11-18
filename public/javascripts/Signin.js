@@ -16,11 +16,11 @@ var init = function() {
 
     $("#submit").click(function(e) {
         e.preventDefault();
-        var email = document.getElementById("emailInput").value;
-        var firstname = document.getElementById("firstnameInput").value;
-        var lastname = document.getElementById("lastnameInput").value;
-        var password = document.getElementById("passwordInput").value;
-        var verifypassword = document.getElementById("verifypasswordInput").value;
+        var email = $("#emailInput").val();
+        var firstname = $("#firstnameInput").val();
+        var lastname = $("#lastnameInput").val();
+        var password = $("#passwordInput").val();
+        var verifypassword = $("#verifypasswordInput").val();
 
         if(!isEmail(email)){
             //wrong email
@@ -78,10 +78,7 @@ var init = function() {
             });
             */
 
-
         }
-
-
     });
 };
 

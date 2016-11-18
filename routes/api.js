@@ -4,7 +4,7 @@
 var express = require('express');
 var router = express.Router();
 var Signin = require('../models/postModels');
-
+const crypto = require('crypto');
 
 
 function isEmail(str){
@@ -61,12 +61,17 @@ router.post('/signin',function(req,res) {
         //add code to encrypt
         // sha(password+"asjhkdfalhs")
         //add code to save in data base here
+        var cipher = crypto.createCipher('aes192', 'alexsupreme');
+        var encrypted = cipher.update('some clear text data', 'utf8', 'hex');
+        encrypted += cipher.final('hex');
 
+
+        console.log(encrypted);
         var newUser = new Signin({
             emailaddress: email,
             firstname: firstname,
             lastname: lastname,
-            password: password
+            password: encrypted
         });
 
         newUser.save(function(err) {
