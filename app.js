@@ -6,7 +6,15 @@ var bodyParser = require('body-parser');
 var api = require('./routes/api');
 var mongoose = require('mongoose');
 mongoose.connect('mongodb://localhost/test');
+var db = mongoose.connection;
 
+db.on('error', function (err) {
+    console.log('Mongo connection error. Please check Mongo is running on the host');
+    console.log(err);
+});
+db.once('open', function () {
+    console.log('MongoDb connected.');
+});
 
 var app = express();
 
