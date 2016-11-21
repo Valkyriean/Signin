@@ -6,18 +6,15 @@
 }
 
 .around{
-	background: #D0D0D0;
-	width: 500px;
-	height: 500px;
-	margin-right: auto;
-	margin-left: auto;
-	margin-bottom: 10px;
-	text-align: center;
-	border-top-left-radius: 10px;
-	border-top-right-radius: 10px;
-	border-bottom-left-radius: 10px;
-	border-bottom-right-radius: 10px;
-	margin-top: 100px;
+    background: #D0D0D0;
+    width: 500px;
+    height: 520px;
+    margin: 10px auto;
+    text-align:center;
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+    border-bottom-left-radius: 10px;
+    border-bottom-right-radius: 10px;
 }
 
 .signup{
@@ -27,26 +24,28 @@
     line-height: 100px;
 }
 
-.box{
-	margin: 20px 80px;
-	text-align: right;
+.text{
+    text-align:left;
+    margin-top: 10px;
+    font-size: 20px;
+    margin-left: 100px;
 }
 
-.text{
-
-    width: 200px;
+.box{
+    text-align:left;
+    width:300px;
     line-height: 15px;
     background: white;
     font-size: 20px;
-
 }
 
 .but{
     background: teal;
     color: white;
+
     width: 100px;
     height: 30px;
-    margin: 30px auto;
+    margin-top: 40px;
     font-size: 20px;
     border-top-left-radius: 7px;
     border-top-right-radius: 7px;
