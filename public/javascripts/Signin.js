@@ -22,16 +22,30 @@ var init = function() {
         var password = $("#passwordInput").val();
         var verifypassword = $("#verifypasswordInput").val();
 
-        if(!isEmail(email)){
+        if(!isEmail(email)) {
             //wrong email
             alert('Invalid Email Address');
-        }else if(!goodPassword(password)){
+            $("#email").css("color","red");
+        }else {
+            $("#email").css("color","black");
+        }
+
+        if(!goodPassword(password)){
             //not good password
             alert('Invalid Password');
-        }else if(password!=verifypassword){
-            //not same password
+            $("#password").css("color","red");
+        }else {
+            $("#password").css("color","black");
+        }
+
+        if(password!=verifypassword){
             alert('Two Password Are Not Same');
-        }else{
+            $("#verifyPassword").css("color","red");
+        }else {
+            $("#verifyPassword").css("color","black");
+        }
+
+        if( isEmail(email) && goodPassword(password) && password == verifypassword) {
             //all good
             var data = {email:email,firstname:firstname,lastname:lastname,password:password,verifypassword:verifypassword};
 
