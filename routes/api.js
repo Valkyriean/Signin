@@ -17,6 +17,13 @@ function goodPassword(str){
     return reg.test(str);
 }
 
+function encrypt(str){
+    var cipher = crypto.createCipher('aes192', 'alexsupreme');
+    var encrypted = cipher.update(str, 'utf8', 'hex');
+    encrypted += cipher.final('hex');
+    return encrypted;
+}
+
 router.post('/login', function (req, res) {
     console.log("login connected");
     var username = req.body.username;
@@ -61,10 +68,8 @@ router.post('/signin',function(req,res) {
         //add code to encrypt
         // sha(password+"asjhkdfalhs")
         //add code to save in data base here
-        var cipher = crypto.createCipher('aes192', 'alexsupreme');
-        var encrypted = cipher.update('some clear text data', 'utf8', 'hex');
-        encrypted += cipher.final('hex');
 
+        var encrypted = encrypt(password);
 
         console.log(encrypted);
         var newUser = new Signin({
