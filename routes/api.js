@@ -26,17 +26,25 @@ function encrypt(str){
 
 router.post('/login', function (req, res) {
     console.log("login connected");
+
     var username = req.body.username;
     var password = req.body.password;
-    console.log(username);
-    console.log(password);
-    if (username=="alex" && password=='alex') {
-        res.json({"status": "success"});
-        console.log("success");
-    } else {
-        res.json({"status":"failed"});
-        console.log("failed");
-    }
+    console.log("username is " + username + " and the password is " + password);
+    var encryptedinput = encrypt(password);
+    Signin.find({emailaddress:'username'},function(err,user){
+        if(err){
+            re.json({"status":"notfund"});
+        }
+
+        if(user.password == encryptedinput){
+            res.json({"status": "success"});
+            console.log("success");
+        }else{
+            res.json({"status":"failed"});
+            console.log("failed");
+        }
+
+    });
 });
 
 router.post('/signin',function(req,res) {
