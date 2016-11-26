@@ -1,6 +1,12 @@
 /**
- * Created by Alexander on 17/10/2016.
+ * Created by Li on 17/10/2016.
+ * Code to run Mongod on Windows
+ * open cmd first, and copy those code
+ *
+ * cd C:\Program Files\MongoDB\Server\3.2\bin
+ * mongod --dbpath C:\Projects\data\db
  */
+
 var express = require('express');
 var bodyParser = require('body-parser');
 var api = require('./routes/api');

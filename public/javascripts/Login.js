@@ -10,23 +10,11 @@ var init = function() {
            console.log(response);
             alert('login '+response.status);
         },'json');
-
-        /* works as well but
-        var settings = {
-            "url": url,
-            "method": "POST",
-            "headers": {
-            "content-type": "application/json",
-        },
-        "data": "{\"username\":\""+text+"\",\"password\":\""+password+"\"}"
-        }
-
-        $.ajax(settings).done(function (response) {
-        console.log(response.status);
-        alert("Login "+response.status)
-    });
-    */
   });
+    $("#SignButton").click(function(e) {
+        e.preventDefault();
+        window.location.href='Index.html';
+    });
 };
 
 $(document).ready(init);

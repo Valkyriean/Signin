@@ -1,5 +1,5 @@
 /**
- * Created by Alexander on 19/10/2016.
+ * Created by Li on 19/10/2016.
  */
 var express = require('express');
 var router = express.Router();
@@ -14,6 +14,11 @@ function isEmail(str){
 
 function goodPassword(str){
     var reg =/^[\@A-Za-z0-9\!\#\$\%\^\&\*\.\~]{6,22}$/;
+    return reg.test(str);
+}
+
+function goodName(str){
+    var reg =/^[A-Za-z]{1,}$/;
     return reg.test(str);
 }
 
@@ -68,17 +73,20 @@ router.post('/signin',function(req,res) {
         //not same password
         res.json({"status": "dp"});
         console.log("different password");
+    }else if(!goodName(firstname)){
+        //not good first name
+        res.json({"status":"wf"});
+        console.log("wrong first name");
+    }else if(!goodName(lastname)){
+        //not good last name
+        res.json({"status":"wl"});
+        console.log("wrong last name");
     }else{
         //all good
         res.json({"status": "success"});
         console.log("success");
 
-        //add code to encrypt
-        // sha(password+"asjhkdfalhs")
-        //add code to save in data base here
-
         var encrypted = encrypt(password);
-
         console.log(encrypted);
         var newUser = new Signin({
             emailaddress: email,
