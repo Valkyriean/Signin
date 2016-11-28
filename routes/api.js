@@ -36,10 +36,11 @@ router.post('/login', function (req, res) {
     var password = req.body.password;
     console.log("username is " + username + " and the password is " + password);
     var encryptedinput = encrypt(password);
-    Signin.find({emailaddress:'username'},function(err,user){
-        if(err){
-            re.json({"status":"notfund"});
-        }
+    console.log(encryptedinput);
+    Signin.findOne({'emailaddress':username},function(err,user){
+        if(err) throw err;
+        console.log(user.toString());
+        console.log(user.password);
 
         if(user.password == encryptedinput){
             res.json({"status": "success"});
@@ -48,8 +49,8 @@ router.post('/login', function (req, res) {
             res.json({"status":"failed"});
             console.log("failed");
         }
-
     });
+
 });
 
 router.post('/signin',function(req,res) {
