@@ -17,6 +17,6 @@ app.config(function($stateProvider,$urlRouterProvider) {
     $stateProvider.state(login);
     $stateProvider.state(signup);
 
-    $urlRouterProvider.otherwise('/login');
+    $urlRouterProvider.otherwise('/signup');
 
 });
