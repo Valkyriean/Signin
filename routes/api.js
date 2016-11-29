@@ -3,9 +3,11 @@
  */
 var express = require('express');
 var router = express.Router();
-var Signin = require('../models/postModels');
+var Signup = require('../models/postModels');
 const crypto = require('crypto');
+var jwt = require('jsonwebtoken');
 
+var secretKey = "alexsupreme";
 
 function isEmail(str){
     var reg = /^([a-zA-Z0-9_-])+@([a-zA-Z0-9_-])+(.[a-zA-Z0-9_-])+/;
@@ -23,7 +25,7 @@ function goodName(str){
 }
 
 function encrypt(str){
-    var cipher = crypto.createCipher('aes192', 'alexsupreme');
+    var cipher = crypto.createCipher('aes192', secretKey);
     var encrypted = cipher.update(str, 'utf8', 'hex');
     encrypted += cipher.final('hex');
     return encrypted;
@@ -37,24 +39,32 @@ router.post('/login', function (req, res) {
     console.log("username is " + username + " and the password is " + password);
     var encryptedinput = encrypt(password);
     console.log(encryptedinput);
-    Signin.findOne({'emailaddress':username},function(err,user){
+    Signup.findOne({'emailaddress':username},function(err,user){
         if(err) throw err;
-        console.log(user.toString());
-        console.log(user.password);
-
-        if(user.password == encryptedinput){
-            res.json({"status": "success"});
-            console.log("success");
+        if(user==null){
+            console.log('user '+username+' is not found ');
+            res.json({"status": "Failed, Email has not been registered yet"})
         }else{
-            res.json({"status":"failed"});
-            console.log("failed");
+            console.log(user.toString());
+            console.log(user.password);
+            if(user.password == encryptedinput){
+                res.json({"status": "success"});
+                console.log("success");
+                //TODO generate the token here
+
+
+            }else{
+                res.json({"status":"Failed, Wrong Password!"});
+                console.log("failed");
+            }
         }
+
     });
 
 });
 
-router.post('/signin',function(req,res) {
-    console.log("Sign connected");
+router.post('/signup',function(req,res) {
+    console.log("Sign up connected");
 
     var email = req.body.email;
     var firstname = req.body.firstname;
@@ -83,34 +93,28 @@ router.post('/signin',function(req,res) {
         res.json({"status":"wl"});
         console.log("wrong last name");
     }else{
-        var repeat;
-        Signin.findOne({'emailaddress':email},function(err,user){
+        Signup.findOne({'emailaddress':email},function(err,user){
             if(err) throw err;
             if(user==null){
-                repeat=false;
+                var encrypted = encrypt(password);
+                console.log(encrypted);
+                var newUser = new Signup({
+                    emailaddress: email,
+                    firstname: firstname,
+                    lastname: lastname,
+                    password: encrypted
+                });
+                newUser.save(function(err) {
+                    if (err) throw err;
+                    console.log('User saved successfully!');
+                });
+                res.json({"status": "success"});
+                console.log("success");
             }else{
-                repeat=true;
+                res.json({"status":"repeat"});
+                console.log('repeat email');
             }
         });
-
-        if(!repeat){
-            res.json({"status": "success"});
-            console.log("success");
-            var encrypted = encrypt(password);
-            console.log(encrypted);
-            var newUser = new Signin({
-                emailaddress: email,
-                firstname: firstname,
-                lastname: lastname,
-                password: encrypted
-            });
-            newUser.save(function(err) {
-                if (err) throw err;
-                console.log('User saved successfully!');
-            });
-        }else{
-            res.json({"status":"repeat"});
-        }
 
 
 
@@ -119,6 +123,5 @@ router.post('/signin',function(req,res) {
 
     }
 });
-
 
 module.exports = router;
