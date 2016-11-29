@@ -11,12 +11,12 @@ app.config(function($stateProvider,$urlRouterProvider) {
     var signup = {
         name: 'signup',
         url: '/signup',
-        templateUrl: 'template/Signin.html'
+        templateUrl: 'template/SignUp.html'
     };
 
     $stateProvider.state(login);
-    $stateProvider.state(signup);
+    $stateProvider.state(signin);
 
-    $urlRouterProvider.otherwise('/signup');
+    $urlRouterProvider.otherwise('/login');
 
 });
