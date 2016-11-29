@@ -83,23 +83,39 @@ router.post('/signin',function(req,res) {
         res.json({"status":"wl"});
         console.log("wrong last name");
     }else{
+        var repeat;
+        Signin.findOne({'emailaddress':email},function(err,user){
+            if(err) throw err;
+            if(user==null){
+                repeat=false;
+            }else{
+                repeat=true;
+            }
+        });
+
+        if(!repeat){
+            res.json({"status": "success"});
+            console.log("success");
+            var encrypted = encrypt(password);
+            console.log(encrypted);
+            var newUser = new Signin({
+                emailaddress: email,
+                firstname: firstname,
+                lastname: lastname,
+                password: encrypted
+            });
+            newUser.save(function(err) {
+                if (err) throw err;
+                console.log('User saved successfully!');
+            });
+        }else{
+            res.json({"status":"repeat"});
+        }
+
+
+
         //all good
-        res.json({"status": "success"});
-        console.log("success");
 
-        var encrypted = encrypt(password);
-        console.log(encrypted);
-        var newUser = new Signin({
-            emailaddress: email,
-            firstname: firstname,
-            lastname: lastname,
-            password: encrypted
-        });
-
-        newUser.save(function(err) {
-            if (err) throw err;
-            console.log('User saved successfully!');
-        });
 
     }
 });

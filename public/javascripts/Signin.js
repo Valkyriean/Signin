@@ -80,6 +80,8 @@ var init = function() {
                     alert('Invalid First Name');
                 }else if(res == 'wl'){
                     alert('Invalid Last Name');
+                }else if(res == 'repeat'){
+                    alert('The email address has already been registered ')
                 }else if(res == 'success'){
                     alert('Sign In Success');
                     window.location.href='login.js';
