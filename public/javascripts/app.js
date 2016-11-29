@@ -8,9 +8,9 @@ app.config(function($stateProvider,$urlRouterProvider) {
         templateUrl: 'template/Login.html'
     };
 
-    var signup = {
-        name: 'signup',
-        url: '/signup',
+    var signin = {
+        name: 'signin',
+        url: '/signin',
         templateUrl: 'template/SignUp.html'
     };
 
