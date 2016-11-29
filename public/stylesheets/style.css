@@ -1,8 +1,129 @@
-body {
-  padding: 50px;
-  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+.loginblock{
+  background: teal;
+  width: 600px;
+  height: 150px;
+  margin:0 auto;
 }
 
-a {
-  color: #00B7FF;
+.loginaround{
+  background: #D0D0D0;
+  width: 600px;
+  height: 300px;
+  text-align:center;
+  margin:0 auto;
+  border-top-left-radius: 5px;
+  border-top-right-radius: 5px;
+  border-bottom-left-radius: 5px;
+  border-bottom-right-radius: 5px;
+}
+
+.loginblock1{
+  background: #D0D0D0;
+  width: 600px;
+  height: 50px;
+  text-align:center;
+  margin:0 auto;
+  border-top-left-radius: 5px;
+  border-top-right-radius: 5px;
+}
+
+.loginincorrect{
+  text-align: left;
+  color: #D0D0D0;
+  text-align:center;
+}
+
+#EnterPassword{
+  color: gray;
+  background: white;
+  width: 300px;
+  height: 25px;
+  margin:10px auto;
+  font-size: 20px;
+}
+
+#EnterText{
+  color: gray;
+  background: white;
+  width: 300px;
+  height: 25px;
+  margin:10px auto;
+  font-size: 20px;
+}
+
+.loginbut{
+  background: teal;
+  color: white;
+  width: 140px;
+  height: 30px;
+  text-align:center;
+  margin:10px 10px;
+  font-size: 20px;
+  border-top-left-radius: 7px;
+  border-top-right-radius: 7px;
+  border-bottom-left-radius: 7px;
+  border-bottom-right-radius: 7px;
+}
+
+.loginlyp{
+  color: gray;
+  width: 190px;
+  height: 30px;
+  text-align:center;
+  margin:10px auto;
+}
+
+.signupblock{
+  background: teal;
+  width: 600px;
+  height: 80px;
+  margin:0 auto;
+}
+
+.signuparound{
+  background: #D0D0D0;
+  width: 500px;
+  height: 520px;
+  margin: 10px auto;
+  text-align:center;
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
+  border-bottom-left-radius: 10px;
+  border-bottom-right-radius: 10px;
+}
+
+.signup{
+  color: gray;
+  text-align:center;
+  font-size: 30px;
+  line-height: 100px;
+}
+
+.signuptext{
+  text-align:left;
+  margin-top: 10px;
+  font-size: 20px;
+  margin-left: 100px;
+}
+
+.signupbox{
+  text-align:left;
+  width:300px;
+  line-height: 15px;
+  background: white;
+  font-size: 20px;
+}
+
+.signupbut{
+  background: teal;
+  color: white;
+
+  width: 100px;
+  height: 30px;
+  margin-top: 40px;
+  font-size: 20px;
+  border-top-left-radius: 7px;
+  border-top-right-radius: 7px;
+  border-bottom-left-radius: 7px;
+  border-bottom-right-radius: 7px;
 }
