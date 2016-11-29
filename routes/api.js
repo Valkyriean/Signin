@@ -6,7 +6,6 @@ var router = express.Router();
 var Signup = require('../models/postModels');
 const crypto = require('crypto');
 var jwt = require('jsonwebtoken');
-
 var secretKey = "alexsupreme";
 
 function isEmail(str){
@@ -48,11 +47,11 @@ router.post('/login', function (req, res) {
             console.log(user.toString());
             console.log(user.password);
             if(user.password == encryptedinput){
-                res.json({"status": "success"});
+
+                var token = jwt.sign(user.id,secretKey);
+                console.log(token);
+                res.json({"status": "success","token":token,"lastname":user.lastname});
                 console.log("success");
-                //TODO generate the token here
-
-
             }else{
                 res.json({"status":"Failed, Wrong Password!"});
                 console.log("failed");
