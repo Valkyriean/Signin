@@ -1,4 +1,4 @@
-var url = "http://localhost:3000/api/signin";
+var url = "http://localhost:3000/api/signup";
 
 function isEmail(str){
     var reg = /^([a-zA-Z0-9_-])+@([a-zA-Z0-9_-])+(.[a-zA-Z0-9_-])+/;
@@ -84,7 +84,7 @@ var init = function() {
                     alert('The email address has already been registered ')
                 }else if(res == 'success'){
                     alert('Sign In Success');
-                    window.location.href='login.js';
+                    window.location.href='LoginIndex.html';
                     //TODO Jump to login page code here
                 }else{
                     alert('There are some issue with server \nPlease contact with website administrator\n phantomgale@hotmail.com');
