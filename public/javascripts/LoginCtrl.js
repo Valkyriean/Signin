@@ -5,18 +5,18 @@
 var app = angular.module('CSP');
 
 app.controller('LoginCtrl', function($scope,$state) {
-    $scope.user = {};
+    $scope.logindata = {};
 
 
     var Loginurl = "http://localhost:3000/api/login";
     var token;
 
     $scope.login=function() {
-        console.log($scope.user);
+        console.log($scope.logindata);
         // var text = document.getElementById("EnterText").value;
         // var password = document.getElementById("EnterPassword").value;
         // var data = {username: text, password: password};
-        $.post(Loginurl,$scope.user, function (response) {
+        $.post(Loginurl,$scope.logindata, function (response) {
             console.log(response);
             if (response.status == 'success') {
                 alert('Welcome back ' + response.lastname);

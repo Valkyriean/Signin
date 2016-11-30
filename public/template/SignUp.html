@@ -3,19 +3,19 @@
 
     <div class="signup">Sign up</div>
 
-    <div class="signuptext" id="email">E-mail Address: </div>
+    <div class="signuptext" id="email" ng-model="signupdata.email">E-mail Address: </div>
     <input class="signupbox" id= "emailInput" placeholder=" ">
 
-    <div class="signuptext" id="firstName">First Name:</div>
+    <div class="signuptext" id="firstName" ng-model="signupdata.firstname">First Name:</div>
     <input class="signupbox" id="firstnameInput" placeholder=" ">
 
-    <div class="signuptext" id="lastName">Last Name:</div>
+    <div class="signuptext" id="lastName" ng-model="signupdata.lastname">Last Name:</div>
     <input class="signupbox" id="lastnameInput" placeholder=" ">
 
-    <div class="signuptext" id="password">Password:</div>
+    <div class="signuptext" id="password"ng-model="signupdata.password">Password:</div>
     <input class="signupbox" id="passwordInput" type="password" required name='pass' placeholder=" ">
 
-    <div class="signuptext" id="verifyPassword">Verify Password:</div>
+    <div class="signuptext" id="verifyPassword" ng-model="signupdata.verifypassword">Verify Password:</div>
     <input class="signupbox" id="verifypasswordInput" type="password" required name='pass' placeholder=" ">
 
     <br><button class="signupbut" id=submit ng-click="signupcli()">Confirm</button>

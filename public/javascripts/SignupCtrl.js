@@ -6,7 +6,8 @@ var app = angular.module('CSP');
 
 app.controller('SignupCtrl', function($scope,$state) {
     var SignUPurl = "http://localhost:3000/api/signup";
-    $scope.login={};
+    
+    $scope.signpudata={};
 
     function isEmail(str){
         var reg = /^([a-zA-Z0-9_-])+@([a-zA-Z0-9_-])+(.[a-zA-Z0-9_-])+/;
@@ -24,13 +25,9 @@ app.controller('SignupCtrl', function($scope,$state) {
     }
 
     $scope.signupcli=function(){
-        var email = $("#emailInput").val();
-        var firstname = $("#firstnameInput").val();
-        var lastname = $("#lastnameInput").val();
-        var password = $("#passwordInput").val();
-        var verifypassword = $("#verifypasswordInput").val();
 
-        if(!isEmail(email)) {
+
+        if(!isEmail($scope.signpudata.email)) {
             //wrong email
             alert('Invalid Email Address');
             $("#email").css("color","red");
@@ -38,7 +35,7 @@ app.controller('SignupCtrl', function($scope,$state) {
             $("#email").css("color","black");
         }
 
-        if(!goodName(firstname)){
+        if(!goodName($scope.signpudata.firstname)){
             //not good first name
             alert('Invalid First Name');
             $("#firstName").css("color","red");
@@ -46,7 +43,7 @@ app.controller('SignupCtrl', function($scope,$state) {
             $("#firstName").css("color","black");
         }
 
-        if(!goodName(lastname)){
+        if(!goodName($scope.signpudata.lastname)){
             //not good last name
             alert('Invalid Last Name');
             $("#lastName").css("color","red");
@@ -54,7 +51,7 @@ app.controller('SignupCtrl', function($scope,$state) {
             $("#lastName").css("color","black");
         }
 
-        if(!goodPassword(password)){
+        if(!goodPassword($scope.signpudata.password)){
             //not good password
             alert('Invalid Password');
             $("#password").css("color","red");
@@ -62,17 +59,16 @@ app.controller('SignupCtrl', function($scope,$state) {
             $("#password").css("color","black");
         }
 
-        if(password!=verifypassword){
+        if($scope.signpudata.password!=$scope.signpudata.verifypassword){
             alert('Two Password Are Not Same');
             $("#verifyPassword").css("color","red");
         }else {
             $("#verifyPassword").css("color","black");
         }
 
-        if( isEmail(email) && goodPassword(password) && (password == verifypassword) && goodName(firstname) && goodName(lastname) ) {
+        if( isEmail($scope.signpudata.email) && goodPassword($scope.signpudata.password) && ($scope.signpudata.password == $scope.signpudata.verifypassword) && goodName($scope.signpudata.firstname) && goodName($scope.signpudata.lastname) ) {
             //If user input is all good
-            var data = {email:email,firstname:firstname,lastname:lastname,password:password,verifypassword:verifypassword};
-            $.post(SignUPurl,data,function (response) {
+            $.post(SignUPurl,$scope.signpudata,function (response) {
                 console.log(response);
                 var res = response.status;
                 if(res == 'we'){
