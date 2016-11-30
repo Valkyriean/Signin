@@ -16,7 +16,7 @@ app.controller('LoginCtrl', function($scope,$state,$http) {
                 alert('Welcome back ' + response.lastname);
                 token = response.token;
                 console.log(token);
-                //TODO save token as cookies
+                document.cookie = token;
             } else {
                 alert('Login ' + response.status);
             }
