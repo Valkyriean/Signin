@@ -6,6 +6,7 @@ var app = angular.module('CSP');
 
 app.controller('SignupCtrl', function($scope,$state) {
     var SignUPurl = "http://localhost:3000/api/signup";
+    $scope.login={};
 
     function isEmail(str){
         var reg = /^([a-zA-Z0-9_-])+@([a-zA-Z0-9_-])+(.[a-zA-Z0-9_-])+/;
@@ -95,7 +96,7 @@ app.controller('SignupCtrl', function($scope,$state) {
                 }
             },'json');
         }
-    }
+    };
 
 
 

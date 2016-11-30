@@ -2,8 +2,8 @@
 <div class="loginaround">
     <div class="loginblock1"></div>
     <div class="loginincorrect">The username or password is not correct</div>
-    <input id="EnterText" type="text" required name='user_name' placeholder="Enter your email">
-    <br><input id="EnterPassword" type="password" required name='pass' placeholder="Password">
+    <input id="EnterText" type="text" required name='user_name' placeholder="Enter your email" ng-model="user.username">
+    <br><input id="EnterPassword" type="password" required name='pass' placeholder="Password" ng-model="user.password">
     <br><button class="loginbut" id="Button" ng-click="login()">Login</button>
     <button class="loginbut" id="SignButton" ng-click="signupbut()">Sign up</button>
     <div class="loginlyp">Lost your password?</div>

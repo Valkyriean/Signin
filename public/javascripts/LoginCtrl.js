@@ -5,15 +5,18 @@
 var app = angular.module('CSP');
 
 app.controller('LoginCtrl', function($scope,$state) {
+    $scope.user = {};
+
 
     var Loginurl = "http://localhost:3000/api/login";
     var token;
 
     $scope.login=function() {
-        var text = document.getElementById("EnterText").value;
-        var password = document.getElementById("EnterPassword").value;
-        var data = {username: text, password: password};
-        $.post(Loginurl, data, function (response) {
+        console.log($scope.user);
+        // var text = document.getElementById("EnterText").value;
+        // var password = document.getElementById("EnterPassword").value;
+        // var data = {username: text, password: password};
+        $.post(Loginurl,$scope.user, function (response) {
             console.log(response);
             if (response.status == 'success') {
                 alert('Welcome back ' + response.lastname);
@@ -26,9 +29,9 @@ app.controller('LoginCtrl', function($scope,$state) {
                 alert('login ' + response.status);
             }
         }, 'json');
-    }
+    };
 
     $scope.signupbut=function(){
         $state.go("signup");
-    }
+    };
 });
