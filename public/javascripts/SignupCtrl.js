@@ -4,10 +4,9 @@
 
 var app = angular.module('CSP');
 
-app.controller('SignupCtrl', function($scope,$state) {
-    var SignUPurl = "http://localhost:3000/api/signup";
-    
+app.controller('SignupCtrl', function($scope,$state,$http) {
     $scope.signpudata={};
+    var Signupurl = "/api/signup";
 
     function isEmail(str){
         var reg = /^([a-zA-Z0-9_-])+@([a-zA-Z0-9_-])+(.[a-zA-Z0-9_-])+/;
@@ -25,51 +24,61 @@ app.controller('SignupCtrl', function($scope,$state) {
     }
 
     $scope.signupcli=function(){
-
-
+        var allgood=true;
         if(!isEmail($scope.signpudata.email)) {
             //wrong email
             alert('Invalid Email Address');
+            //TODO use angular form instead of jquery
             $("#email").css("color","red");
+            allgood=false;
         }else {
             $("#email").css("color","black");
+            allgood=true;
         }
 
         if(!goodName($scope.signpudata.firstname)){
             //not good first name
             alert('Invalid First Name');
             $("#firstName").css("color","red");
+            allgood=false;
         }else{
             $("#firstName").css("color","black");
+            allgood=true;
         }
 
         if(!goodName($scope.signpudata.lastname)){
             //not good last name
             alert('Invalid Last Name');
             $("#lastName").css("color","red");
+            allgood=false;
         }else{
             $("#lastName").css("color","black");
+            allgood=true;
         }
 
         if(!goodPassword($scope.signpudata.password)){
             //not good password
             alert('Invalid Password');
             $("#password").css("color","red");
+            allgood=false;
         }else {
             $("#password").css("color","black");
+            allgood=true;
         }
 
         if($scope.signpudata.password!=$scope.signpudata.verifypassword){
             alert('Two Password Are Not Same');
             $("#verifyPassword").css("color","red");
+            allgood=false;
         }else {
             $("#verifyPassword").css("color","black");
+            allgood=true;
         }
 
-        if( isEmail($scope.signpudata.email) && goodPassword($scope.signpudata.password) && ($scope.signpudata.password == $scope.signpudata.verifypassword) && goodName($scope.signpudata.firstname) && goodName($scope.signpudata.lastname) ) {
+        if(allgood) {
             //If user input is all good
-            $.post(SignUPurl,$scope.signpudata,function (response) {
-                console.log(response);
+            $http.post(Signupurl,$scope.signpudata).success(function(response){
+                console.log($scope.signpudata);
                 var res = response.status;
                 if(res == 'we'){
                     alert('Invalid Email Address');
@@ -85,12 +94,11 @@ app.controller('SignupCtrl', function($scope,$state) {
                     alert('The email address has already been registered ')
                 }else if(res == 'success'){
                     alert('Sign In Success');
-                    //TODO Jump to login page code here
                     $state.go("login");
                 }else{
                     alert('There are some issue with server \nPlease contact with website administrator\n phantomgale@hotmail.com');
                 }
-            },'json');
+            });
         }
     };
 

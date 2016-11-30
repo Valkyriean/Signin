@@ -32,7 +32,6 @@ function encrypt(str){
 
 router.post('/login', function (req, res) {
     console.log("login connected");
-
     var username = req.body.username;
     var password = req.body.password;
     console.log("username is " + username + " and the password is " + password);
@@ -47,7 +46,6 @@ router.post('/login', function (req, res) {
             console.log(user.toString());
             console.log(user.password);
             if(user.password == encryptedinput){
-
                 var token = jwt.sign(user.id,secretKey);
                 console.log(token);
                 res.json({"status": "success","token":token,"lastname":user.lastname});
@@ -57,20 +55,16 @@ router.post('/login', function (req, res) {
                 console.log("failed");
             }
         }
-
     });
-
 });
 
 router.post('/signup',function(req,res) {
     console.log("Sign up connected");
-
     var email = req.body.email;
     var firstname = req.body.firstname;
     var lastname = req.body.lastname;
     var password = req.body.password;
     var verifypassword = req.body.verifypassword;
-
     if(!isEmail(email)){
         //wrong email
         res.json({"status": "we"});
@@ -114,12 +108,6 @@ router.post('/signup',function(req,res) {
                 console.log('repeat email');
             }
         });
-
-
-
-        //all good
-
-
     }
 });
 
