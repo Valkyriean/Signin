@@ -23,7 +23,7 @@ app.controller('LoginCtrl', function($scope,$state) {
                 token = response.token;
                 console.log(token);
                 //TODO save token as cookies
-
+                document.cookie = token;
                 //TODO forward to home page(not needed yet)
             } else {
                 alert('login ' + response.status);
