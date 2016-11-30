@@ -1,4 +1,4 @@
-var url = "http://localhost:3000/api/signup";
+var SignUPurl = "http://localhost:3000/api/signup";
 
 function isEmail(str){
     var reg = /^([a-zA-Z0-9_-])+@([a-zA-Z0-9_-])+(.[a-zA-Z0-9_-])+/;
@@ -67,7 +67,7 @@ var init = function() {
         if( isEmail(email) && goodPassword(password) && (password == verifypassword) && goodName(firstname) && goodName(lastname) ) {
             //If user input is all good
             var data = {email:email,firstname:firstname,lastname:lastname,password:password,verifypassword:verifypassword};
-            $.post(url,data,function (response) {
+            $.post(SignUPurl,data,function (response) {
                 console.log(response);
                 var res = response.status;
                 if(res == 'we'){
