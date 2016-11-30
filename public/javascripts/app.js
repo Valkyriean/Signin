@@ -22,11 +22,6 @@ app.config(function($stateProvider,$urlRouterProvider) {
 
 });
 
-app.controller('Ctrl',function ($scope,$location) {
-    $scope.go = function (add) {
-        $location.path(add);
-    }
-});
 
 var Loginurl = "http://localhost:3000/api/login";
 var SignUPurl = "http://localhost:3000/api/signup";
@@ -48,6 +43,12 @@ function goodName(str){
 
 var token;
 var init = function() {
+    $("#signbutton").click(function(e){
+        e.preventDefault();
+        $state.go("signup");
+    });
+
+
     $("#Button").click(function(e) {
         e.preventDefault();
         var text = document.getElementById("EnterText").value;
@@ -67,11 +68,6 @@ var init = function() {
             }
         },'json');
     });
-    // $("#SignButton").click(function(e) {
-    //     e.preventDefault();
-    //
-    //
-    // });
 
 
     $("#submit").click(function(e) {
@@ -141,8 +137,8 @@ var init = function() {
                     alert('The email address has already been registered ')
                 }else if(res == 'success'){
                     alert('Sign In Success');
-                    // window.location.href='LoginIndex.html';
                     //TODO Jump to login page code here
+                    $state.go("login");
                 }else{
                     alert('There are some issue with server \nPlease contact with website administrator\n phantomgale@hotmail.com');
                 }
