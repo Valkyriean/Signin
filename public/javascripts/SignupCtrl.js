@@ -5,23 +5,8 @@
 var app = angular.module('CSP');
 
 app.controller('SignupCtrl', function($scope,$state,$http) {
-    $scope.signpudata={};
+    $scope.signupdata={};
     var Signupurl = "/api/signup";
-
-    function isEmail(str){
-        var reg = /^([a-zA-Z0-9_-])+@([a-zA-Z0-9_-])+(.[a-zA-Z0-9_-])+/;
-        return reg.test(str);
-    }
-
-    function goodPassword(str){
-        var reg =/^[\@A-Za-z0-9\!\#\$\%\^\&\*\.\~]{6,22}$/;
-        return reg.test(str);
-    }
-
-    function goodName(str) {
-        var reg = /^[A-Za-z]{1,}$/;
-        return reg.test(str);
-    }
 
     $scope.signupcli=function(){
         var allgood=true;
@@ -102,58 +87,4 @@ app.controller('SignupCtrl', function($scope,$state,$http) {
         }
     };
 
-    //http://angularjs.io/how-to-create-a-custom-input-validator-with-angularjs/
-    angular.module('CSP').directive('password', function () {
-        return {
-            restrict: 'A',
-            require: 'ngModel',
-            link: function (scope, element, attr, ctrl) {
-                function customValidator(ngModelValue) {
-                    if (/^[\@A-Za-z0-9\!\#\$\%\^\&\*\.\~]{6,22}$/.test(ngModelValue)) {
-                        ctrl.$setValidity('validation', true);
-                    } else {
-                        ctrl.$setValidity('validation', false);
-                    }
-                    return ngModelValue;
-                }
-                ctrl.$parsers.push(customValidator);
-            }
-        };
-    });
-
-    angular.module('CSP').directive('name', function () {
-        return {
-            restrict: 'A',
-            require: 'ngModel',
-            link: function (scope, element, attr, ctrl) {
-                function customValidator(ngModelValue) {
-                    if ( /^[A-Za-z]{1,}$/.test(ngModelValue)) {
-                        ctrl.$setValidity('validation', true);
-                    } else {
-                        ctrl.$setValidity('validation', false);
-                    }
-                    return ngModelValue;
-                }
-                ctrl.$parsers.push(customValidator);
-            }
-        };
-    });
-
-    angular.module('CSP').directive('repeatpassword', function () {
-        return {
-            restrict: 'A',
-            require: 'ngModel',
-            link: function (scope, element, attr, ctrl) {
-                function customValidator(ngModelValue) {
-                    if (ngModelValue==$scope.signpudata.password) {
-                        ctrl.$setValidity('validation', true);
-                    } else {
-                        ctrl.$setValidity('validation', false);
-                    }
-                    return ngModelValue;
-                }
-                ctrl.$parsers.push(customValidator);
-            }
-        };
-    });
 });

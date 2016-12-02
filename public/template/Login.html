@@ -2,7 +2,7 @@
     <div class="loginblock1"></div>
 
     <div class="input-container">
-        <input type="email" name="email"  ng-model="" ng-required="true" id="EnterText" placeholder="Please enter your E-mail"/>
+        <input type="email" name="email"  ng-model="user.email" ng-required="true" id="EnterText" placeholder="Please enter your E-mail"/>
         <div ng-messages="loginForm.email.$error" role="alert">
             <div ng-message="required" class="error">Please enter a value for this field.</div>
             <div ng-message="email" class="error">This field must be a valid email address.</div>
@@ -11,11 +11,10 @@
 
     <div class="input-container">
         <input type="password"  name="password" ng-model="user.password" ng-required="true" id="EnterPassword" placeholder="Please enter your Password"/>
-        <div ng-messages="loginForm.email.$error" role="alert">
+        <div ng-messages="loginForm.password.$error" role="alert">
             <div ng-message="required" class="error">Please enter a value for this field.</div>
         </div>
     </div>
-
 
     <div class="input-container">
         <button class="loginbut" type="button" id="Button" ng-click="login(loginForm)" ng-disabled="!loginForm.$valid" >Login</button>

@@ -1,4 +1,4 @@
-form{
+.loginForm{
   background: #D0D0D0;
   width: 600px;
   height: 300px;
@@ -11,7 +11,7 @@ form{
   border-bottom-right-radius: 10px;
 }
 
-form input{
+.loginForm input{
   margin-top: 20px;
   width: 60%;
   height: 25px;
@@ -63,20 +63,17 @@ form input{
   margin: 5px 0px;
 }
 
-.input-container.error{
-  color: red;
-}
-
 .error{
+  margin-top: 1px;
   color:red;
 }
 
 .SignupForm{
   background: #D0D0D0;
   width: 500px;
-  height: 700px;
+  height: 680px;
   margin: auto;
-  margin-top: 100px;
+  margin-top: 80px;
   text-align:center;
   border-top-left-radius: 10px;
   border-top-right-radius: 10px;
@@ -84,8 +81,7 @@ form input{
   border-bottom-right-radius: 10px;
 }
 
-.SignupForm{
-  margin-top: 20px;
+.SignupForm input{
   width: 60%;
   height: 25px;
 }
@@ -99,7 +95,7 @@ form input{
 
 .signuptext{
   text-align:left;
-  margin-top: 10px;
+  margin-top: 20px;
   font-size: 20px;
   margin-left: 100px;
 }
@@ -118,7 +114,7 @@ form input{
 
   width: 100px;
   height: 30px;
-  margin-top: 40px;
+  margin-top: 30px;
   font-size: 20px;
   border-top-left-radius: 7px;
   border-top-right-radius: 7px;
