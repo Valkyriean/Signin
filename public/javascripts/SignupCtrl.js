@@ -101,4 +101,41 @@ app.controller('SignupCtrl', function($scope,$state,$http) {
             });
         }
     };
+
+    //http://angularjs.io/how-to-create-a-custom-input-validator-with-angularjs/
+    angular.module('CSP').directive('password', function () {
+        return {
+            restrict: 'A',
+            require: 'ngModel',
+            link: function (scope, element, attr, ctrl) {
+                function customValidator(ngModelValue) {
+                    if (/^[\@A-Za-z0-9\!\#\$\%\^\&\*\.\~]{6,22}$/.test(ngModelValue)) {
+                        ctrl.$setValidity('validation', true);
+                    } else {
+                        ctrl.$setValidity('validation', false);
+                    }
+                    return ngModelValue;
+                }
+                ctrl.$parsers.push(customValidator);
+            }
+        };
+    });
+
+    angular.module('CSP').directive('name', function () {
+        return {
+            restrict: 'A',
+            require: 'ngModel',
+            link: function (scope, element, attr, ctrl) {
+                function customValidator(ngModelValue) {
+                    if ( /^[A-Za-z]{1,}$/.test(ngModelValue)) {
+                        ctrl.$setValidity('validation', true);
+                    } else {
+                        ctrl.$setValidity('validation', false);
+                    }
+                    return ngModelValue;
+                }
+                ctrl.$parsers.push(customValidator);
+            }
+        };
+    });
 });
