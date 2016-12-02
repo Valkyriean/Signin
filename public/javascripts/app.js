@@ -1,4 +1,4 @@
-var app = angular.module('CSP', ['ui.router']);
+var app = angular.module('CSP', ['ui.router','ngMessages']);
 app.config(function($stateProvider,$urlRouterProvider) {
 
     var login = {

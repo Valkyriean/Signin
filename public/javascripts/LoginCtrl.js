@@ -6,10 +6,11 @@ var app = angular.module('CSP');
 
 app.controller('LoginCtrl', function($scope,$state,$http) {
     $scope.logindata = {};
+
     var Loginurl = "/api/login";
     var token;
 
-    $scope.login=function() {
+    $scope.login=function(form) {
         $http.post(Loginurl,$scope.logindata).success(function(response){
             console.log(response);
             if (response.status == 'success') {
@@ -17,6 +18,7 @@ app.controller('LoginCtrl', function($scope,$state,$http) {
                 token = response.token;
                 console.log(token);
                 document.cookie = token;
+                console.log(form);
             } else {
                 alert('Login ' + response.status);
             }
