@@ -1,8 +1,8 @@
-<form name="loginForm" novalidate>
+<form name="loginForm" class="loginForm" novalidate >
     <div class="loginblock1"></div>
 
     <div class="input-container">
-        <input type="email" name="email"  ng-model="user.email" ng-required="true" id="EnterText" placeholder="Please enter your E-mail"/>
+        <input type="email" name="email"  ng-model="" ng-required="true" id="EnterText" placeholder="Please enter your E-mail"/>
         <div ng-messages="loginForm.email.$error" role="alert">
             <div ng-message="required" class="error">Please enter a value for this field.</div>
             <div ng-message="email" class="error">This field must be a valid email address.</div>
