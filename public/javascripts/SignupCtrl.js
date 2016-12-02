@@ -25,55 +25,55 @@ app.controller('SignupCtrl', function($scope,$state,$http) {
 
     $scope.signupcli=function(){
         var allgood=true;
-        if(!isEmail($scope.signpudata.email)) {
-            //wrong email
-            alert('Invalid Email Address');
-            //TODO use angular form instead of jquery
-            $("#email").css("color","red");
-            allgood=false;
-        }else {
-            $("#email").css("color","black");
-            allgood=true;
-        }
-
-        if(!goodName($scope.signpudata.firstname)){
-            //not good first name
-            alert('Invalid First Name');
-            $("#firstName").css("color","red");
-            allgood=false;
-        }else{
-            $("#firstName").css("color","black");
-            allgood=true;
-        }
-
-        if(!goodName($scope.signpudata.lastname)){
-            //not good last name
-            alert('Invalid Last Name');
-            $("#lastName").css("color","red");
-            allgood=false;
-        }else{
-            $("#lastName").css("color","black");
-            allgood=true;
-        }
-
-        if(!goodPassword($scope.signpudata.password)){
-            //not good password
-            alert('Invalid Password');
-            $("#password").css("color","red");
-            allgood=false;
-        }else {
-            $("#password").css("color","black");
-            allgood=true;
-        }
-
-        if($scope.signpudata.password!=$scope.signpudata.verifypassword){
-            alert('Two Password Are Not Same');
-            $("#verifyPassword").css("color","red");
-            allgood=false;
-        }else {
-            $("#verifyPassword").css("color","black");
-            allgood=true;
-        }
+        // if(!isEmail($scope.signpudata.email)) {
+        //     //wrong email
+        //     alert('Invalid Email Address');
+        //     //TODO use angular form instead of jquery
+        //     $("#email").css("color","red");
+        //     allgood=false;
+        // }else {
+        //     $("#email").css("color","black");
+        //     allgood=true;
+        // }
+        //
+        // if(!goodName($scope.signpudata.firstname)){
+        //     //not good first name
+        //     alert('Invalid First Name');
+        //     $("#firstName").css("color","red");
+        //     allgood=false;
+        // }else{
+        //     $("#firstName").css("color","black");
+        //     allgood=true;
+        // }
+        //
+        // if(!goodName($scope.signpudata.lastname)){
+        //     //not good last name
+        //     alert('Invalid Last Name');
+        //     $("#lastName").css("color","red");
+        //     allgood=false;
+        // }else{
+        //     $("#lastName").css("color","black");
+        //     allgood=true;
+        // }
+        //
+        // if(!goodPassword($scope.signpudata.password)){
+        //     //not good password
+        //     alert('Invalid Password');
+        //     $("#password").css("color","red");
+        //     allgood=false;
+        // }else {
+        //     $("#password").css("color","black");
+        //     allgood=true;
+        // }
+        //
+        // if($scope.signpudata.password!=$scope.signpudata.verifypassword){
+        //     alert('Two Password Are Not Same');
+        //     $("#verifyPassword").css("color","red");
+        //     allgood=false;
+        // }else {
+        //     $("#verifyPassword").css("color","black");
+        //     allgood=true;
+        // }
 
         if(allgood) {
             //If user input is all good
@@ -128,6 +128,24 @@ app.controller('SignupCtrl', function($scope,$state,$http) {
             link: function (scope, element, attr, ctrl) {
                 function customValidator(ngModelValue) {
                     if ( /^[A-Za-z]{1,}$/.test(ngModelValue)) {
+                        ctrl.$setValidity('validation', true);
+                    } else {
+                        ctrl.$setValidity('validation', false);
+                    }
+                    return ngModelValue;
+                }
+                ctrl.$parsers.push(customValidator);
+            }
+        };
+    });
+
+    angular.module('CSP').directive('repeatpassword', function () {
+        return {
+            restrict: 'A',
+            require: 'ngModel',
+            link: function (scope, element, attr, ctrl) {
+                function customValidator(ngModelValue) {
+                    if (ngModelValue==$scope.signpudata.password) {
                         ctrl.$setValidity('validation', true);
                     } else {
                         ctrl.$setValidity('validation', false);
