@@ -5,6 +5,14 @@
  *
  * cd C:\Program Files\MongoDB\Server\3.2\bin
  * mongod --dbpath C:\Projects\data\db
+ *
+ *On Linux ubuntu start code is
+ *
+ *sudo service mongod start
+ *
+ *stop code is
+ *
+ *sudo service mongod stop
  */
 
 var express = require('express');
