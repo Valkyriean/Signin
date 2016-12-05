@@ -1,4 +1,4 @@
-var app = angular.module('CSP', ['ngMessages']);
+var app = angular.module('CSP');
 
 app.directive('fname', function () {
     return {

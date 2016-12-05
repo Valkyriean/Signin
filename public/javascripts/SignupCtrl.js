@@ -61,7 +61,7 @@ app.controller('SignupCtrl', function($scope,$state,$http) {
         // }
 
         console.log(form);
-        if(form.$validation) {
+        if(form.$valid) {
             //If user input is all good
             $http.post(Signupurl,$scope.signupdata).success(function(response){
                 console.log($scope.signupdata);
