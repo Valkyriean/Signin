@@ -36,7 +36,7 @@ router.post('/login', function (req, res) {
     var password = req.body.password;
     console.log("username is " + username + " and the password is " + password);
     var encryptedinput = encrypt(password);
-    console.log(encryptedinput);
+    console.log("The encrypted password is "encryptedinput);
     Signup.findOne({'emailaddress':username},function(err,user){
         if(err) throw err;
         if(user==null){
@@ -47,7 +47,7 @@ router.post('/login', function (req, res) {
             console.log(user.password);
             if(user.password == encryptedinput){
                 var token = jwt.sign(user.id,secretKey);
-                console.log(token);
+                console.log("The token is "+token);
                 res.json({"status": "success","token":token,"lastname":user.lastname});
                 console.log("success");
             }else{
