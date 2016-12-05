@@ -8,8 +8,8 @@ app.controller('SignupCtrl', function($scope,$state,$http) {
     $scope.signupdata={};
     var Signupurl = "/api/signup";
 
-    $scope.signupcli=function(){
-        var allgood=true;
+    $scope.signupcli=function(form){
+
         // if(!isEmail($scope.signpudata.email)) {
         //     //wrong email
         //     alert('Invalid Email Address');
@@ -60,7 +60,8 @@ app.controller('SignupCtrl', function($scope,$state,$http) {
         //     allgood=true;
         // }
 
-        if(allgood) {
+        console.log(form);
+        if(form.$validation) {
             //If user input is all good
             $http.post(Signupurl,$scope.signpudata).success(function(response){
                 console.log($scope.signpudata);
