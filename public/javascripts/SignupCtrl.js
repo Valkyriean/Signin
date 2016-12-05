@@ -63,8 +63,8 @@ app.controller('SignupCtrl', function($scope,$state,$http) {
         console.log(form);
         if(form.$validation) {
             //If user input is all good
-            $http.post(Signupurl,$scope.signpudata).success(function(response){
-                console.log($scope.signpudata);
+            $http.post(Signupurl,$scope.signupdata).success(function(response){
+                console.log($scope.signupdata);
                 var res = response.status;
                 if(res == 'we'){
                     alert('Invalid Email Address');
