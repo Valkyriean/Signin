@@ -36,7 +36,7 @@ router.post('/login', function (req, res) {
     var password = req.body.password;
     console.log("username is " + username + " and the password is " + password);
     var encryptedinput = encrypt(password);
-    console.log("The encrypted password is "encryptedinput);
+    console.log("The encrypted password is "+encryptedinput);
     Signup.findOne({'emailaddress':username},function(err,user){
         if(err) throw err;
         if(user==null){
