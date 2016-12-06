@@ -56,7 +56,7 @@ angular.module('CSP').directive('vpass', function($http) {
         restrict: 'A',
         link: function(scope, elem, attr, ctrl) {
             ctrl.$validators.vpass = function(modelValue, viewValue) {
-                if (modelValue == password) {
+                if (modelValue === password) {
                     // it is valid
                     return true;
                 }
