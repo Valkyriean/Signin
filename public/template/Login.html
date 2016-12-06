@@ -2,7 +2,8 @@
     <div class="loginblock1"></div>
 
     <div class="input-container">
-        <input type="email" name="email"  ng-model="logindata.username" ng-required="true" id="EnterText" placeholder="Please enter your E-mail"/>
+        <input name="email" type="email" id="EnterText" placeholder="Please enter your E-mail"
+               ng-model="logindata.username" ng-required="true"/>
         <div ng-messages="loginForm.email.$error" role="alert">
             <div ng-message="required" class="error">Please enter a value for this field.</div>
             <div ng-message="email" class="error">This field must be a valid email address.</div>
@@ -10,14 +11,16 @@
     </div>
 
     <div class="input-container">
-        <input type="password"  name="password" ng-model="logindata.password" ng-required="true" id="EnterPassword" placeholder="Please enter your Password"/>
+        <input name="password" type="password" id="EnterPassword" placeholder="Please enter your Password"
+               ng-model="logindata.password" ng-required="true"/>
         <div ng-messages="loginForm.password.$error" role="alert">
             <div ng-message="required" class="error">Please enter a value for this field.</div>
         </div>
     </div>
 
     <div class="input-container">
-        <button class="loginbut" type="button" id="Button" ng-click="login(loginForm)" ng-disabled="!loginForm.$valid" >Login</button>
+        <button class="loginbut" type="button" id="Button"
+                ng-click="login(loginForm)" ng-disabled="!loginForm.$valid" >Login</button>
         <button class="loginbut" id="SignButton" ng-click="signupbut()">Sign up</button>
     </div>
 

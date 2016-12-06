@@ -5,7 +5,8 @@
     <div class="signup">Sign up</div>
 
     <div class="signuptext" id="email">E-mail Address: </div>
-    <input class="signupbox" id= "emailInput" type="email" name="email" ng-model="signupdata.email" ng-required="true">
+    <input name="email" class="signupbox" id= "emailInput" type="email"
+           ng-model="signupdata.email" ng-required="true">
     <div ng-messages="SignupForm.email.$error" role="alert">
         <div ng-message="required" class="error">Please enter a value for this field.</div>
         <div ng-message="email" class="error">This field must be a valid email address.</div>
@@ -14,7 +15,8 @@
 
 
     <div class="signuptext" id="firstName">First Name:</div>
-    <input class="signupbox" id="firstnameInput" name="fname" ng-model="signupdata.firstname" ng-required="true">
+    <input name="fname" class="signupbox" id="firstnameInput"
+           ng-model="signupdata.firstname" ng-required="true" fname>
     <div ng-messages="SignupForm.fname.$error" role="alert">
         <div ng-message="required" class="error">Please enter a value for this field.</div>
         <div ng-message="fname" class="error">This field must be a valid name.</div>
@@ -24,7 +26,8 @@
 
 
     <div class="signuptext" id="lastName" >Last Name:</div>
-    <input class="signupbox" id="lastnameInput"  name="lname" ng-model="signupdata.lastname" ng-required="true">
+    <input name="lname" class="signupbox" id="lastnameInput"
+           ng-model="signupdata.lastname" ng-required="true" lname>
     <div ng-messages="SignupForm.lname.$error" role="alert">
         <div ng-message="required" class="error">Please enter a value for this field.</div>
         <div ng-message="lname" class="error">This field must be a valid name.</div>
@@ -34,7 +37,8 @@
 
 
     <div class="signuptext" id="password" >Password:</div>
-    <input class="signupbox" id="passwordInput"  type="password" required name='pass' ng-model="signupdata.password">
+    <input name='pass' class="signupbox" id="passwordInput" type="password"
+           ng-model="signupdata.password" ng-required="true" pass>
     <div ng-messages="SignupForm.pass.$error" role="alert">
         <div ng-message="required" class="error">Please enter a value for this field.</div>
         <div ng-message="pass" class="error">This field must be a valid password.</div>
@@ -44,11 +48,11 @@
 
 
     <div class="signuptext" id="verifyPassword" >Verify Password:</div>
-
-    <input class="signupbox" id="verifypasswordInput" type="password" required name='vpass' ng-model="signupdata.verifypassword">
+    <input name='vpass' class="signupbox" id="verifypasswordInput" type="password"
+           ng-model="signupdata.verifypassword" ng-required="true" vpass>
     <div ng-messages="SignupForm.vpass.$error" role="alert">
         <div ng-message="required" class="error">Please enter a value for this field.</div>
-        <div ng-message="vpass" class="error">The .</div>
+        <div ng-message="vpass" class="error">The two passwords are not same.</div>
     </div>
 
 

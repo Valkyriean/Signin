@@ -1,61 +1,67 @@
-var app = angular.module('CSP');
-
-app.directive('fname', function () {
+angular.module('CSP').directive('fname', function($http) {
+    var USERNAME_REGEX=/^[a-zA-Z0-9]*$/;
     return {
-        restrict: 'A',
         require: 'ngModel',
-        link: function (scope, element, attr, ctrl) {
+        restrict: 'A',
+        link: function(scope, elem, attr, ctrl) {
             ctrl.$validators.fname = function(modelValue, viewValue) {
-                if ( /^[A-Za-z]{1,}$/.test(ngModelValue)) {
+                if (USERNAME_REGEX.test(modelValue)) {
+                    // it is valid
                     return true;
                 }
                 return false;
             }
         }
-    };
+    }
 });
 
-app.directive('lname', function () {
+angular.module('CSP').directive('lname', function($http) {
+    var USERNAME_REGEX=/^[a-zA-Z0-9]*$/;
     return {
-        restrict: 'A',
         require: 'ngModel',
-        link: function (scope, element, attr, ctrl) {
+        restrict: 'A',
+        link: function(scope, elem, attr, ctrl) {
             ctrl.$validators.lname = function(modelValue, viewValue) {
-                if ( /^[A-Za-z]{1,}$/.test(ngModelValue)) {
+                if (USERNAME_REGEX.test(modelValue)) {
+                    // it is valid
                     return true;
                 }
                 return false;
             }
         }
-    };
+    }
 });
 
-app.directive('pass', function () {
+angular.module('CSP').directive('pass', function($http) {
+    var EMAIL=/^[\@A-Za-z0-9\!\#\$\%\^\&\*\.\~]{6,22}$/;
     return {
-        restrict: 'A',
         require: 'ngModel',
-        link: function (scope, element, attr, ctrl) {
+        restrict: 'A',
+        link: function(scope, elem, attr, ctrl) {
             ctrl.$validators.pass = function(modelValue, viewValue) {
-                if (/^[\@A-Za-z0-9\!\#\$\%\^\&\*\.\~]{6,22}$/.test(ngModelValue)) {
+                if (EMAIL.test(modelValue)) {
+                    // it is valid
                     return true;
                 }
                 return false;
             }
         }
-    };
+    }
 });
 
-app.directive('vpass', function () {
+angular.module('CSP').directive('vpass', function($http) {
+    var password = $scope.signupdata.password;
     return {
-        restrict: 'A',
         require: 'ngModel',
-        link: function (scope, element, attr, ctrl) {
+        restrict: 'A',
+        link: function(scope, elem, attr, ctrl) {
             ctrl.$validators.vpass = function(modelValue, viewValue) {
-                if (ngModelValue==$scope.signupdata.password) {
+                if (modelValue == password) {
+                    // it is valid
                     return true;
                 }
                 return false;
             }
         }
-    };
+    }
 });
