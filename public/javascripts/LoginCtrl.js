@@ -17,7 +17,7 @@ app.controller('LoginCtrl', function($scope,$state,$http,$cookies) {
                 alert('Welcome back ' + response.lastname);
                 token = response.token;
                 console.log(token);
-                $cookies.put("AlexSupreme",token);
+                $cookies.put("superlogin-token",token);
                 console.log(form);
             } else {
                 alert('Login ' + response.status);
