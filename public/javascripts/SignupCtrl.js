@@ -9,6 +9,37 @@ app.controller('SignupCtrl', function($scope,$state,$http) {
     var Signupurl = "/api/signup";
 
     $scope.signupcli=function(form){
+        console.log(form);
+        if(form.$valid) {
+            //If user input is all good
+            $http.post(Signupurl,$scope.signupdata).success(function(response){
+                console.log($scope.signupdata);
+                var res = response.status;
+                if(res == 'we'){
+                    alert('Invalid Email Address');
+                }else if(res == 'wp'){
+                    alert('Invalid Password');
+                }else if(res == 'dp'){
+                    alert('Two Password Are Not Same');
+                }else if(res == 'wf'){
+                    alert('Invalid First Name');
+                }else if(res == 'wl'){
+                    alert('Invalid Last Name');
+                }else if(res == 'repeat'){
+                    alert('The email address has already been registered ')
+                }else if(res == 'success'){
+                    alert('Sign In Success');
+                    $state.go("login");
+                }else{
+                    alert('There are some issue with server \nPlease contact with website administrator\n phantomgale@hotmail.com');
+                }
+            });
+        }
+    };
+
+});
+
+
 
         // if(!isEmail($scope.signpudata.email)) {
         //     //wrong email
@@ -60,32 +91,4 @@ app.controller('SignupCtrl', function($scope,$state,$http) {
         //     allgood=true;
         // }
 
-        console.log(form);
-        if(form.$valid) {
-            //If user input is all good
-            $http.post(Signupurl,$scope.signupdata).success(function(response){
-                console.log($scope.signupdata);
-                var res = response.status;
-                if(res == 'we'){
-                    alert('Invalid Email Address');
-                }else if(res == 'wp'){
-                    alert('Invalid Password');
-                }else if(res == 'dp'){
-                    alert('Two Password Are Not Same');
-                }else if(res == 'wf'){
-                    alert('Invalid First Name');
-                }else if(res == 'wl'){
-                    alert('Invalid Last Name');
-                }else if(res == 'repeat'){
-                    alert('The email address has already been registered ')
-                }else if(res == 'success'){
-                    alert('Sign In Success');
-                    $state.go("login");
-                }else{
-                    alert('There are some issue with server \nPlease contact with website administrator\n phantomgale@hotmail.com');
-                }
-            });
-        }
-    };
 
-});
