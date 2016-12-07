@@ -4,7 +4,7 @@
 
 var app = angular.module('CSP');
 
-app.controller('LoginCtrl', function($scope,$state,$http) {
+app.controller('LoginCtrl', function($scope,$state,$http,$cookies) {
     $scope.logindata = {};
 
     var Loginurl = "/api/login";
@@ -17,10 +17,7 @@ app.controller('LoginCtrl', function($scope,$state,$http) {
                 alert('Welcome back ' + response.lastname);
                 token = response.token;
                 console.log(token);
-
-                
-
-
+                $cookies.put("AlexSupreme",token);
                 console.log(form);
             } else {
                 alert('Login ' + response.status);
