@@ -34,6 +34,8 @@ app.controller('SignupCtrl', function($scope,$state,$http) {
                     alert('There are some issue with server \nPlease contact with website administrator\n phantomgale@hotmail.com');
                 }
             });
+        }else{
+          alert('Please click submit after all the input meet the requirement');
         }
     };
 
@@ -90,5 +92,3 @@ app.controller('SignupCtrl', function($scope,$state,$http) {
         //     $("#verifyPassword").css("color","black");
         //     allgood=true;
         // }
-
-
