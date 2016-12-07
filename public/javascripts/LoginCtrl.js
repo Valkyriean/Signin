@@ -17,7 +17,10 @@ app.controller('LoginCtrl', function($scope,$state,$http) {
                 alert('Welcome back ' + response.lastname);
                 token = response.token;
                 console.log(token);
-                document.cookie = token;
+
+                
+
+
                 console.log(form);
             } else {
                 alert('Login ' + response.status);
